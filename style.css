@@ -1,0 +1,396 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* COLORES */
+:root {
+    --principal: #978787;
+    --blanco: #ffffff;
+    --gris: #444;
+    --gris-claro: #f5f5f5;
+}
+
+body {
+    text-align: center;
+    background-color: #d1d1d1;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icons i {
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icons i:hover {
+  transform: scale(1.2);
+}
+
+.hero {
+  height: 100vh;
+  background: url("imagenes/portada2.png") center/cover no-repeat;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("imagenes/portada2.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* capa oscura suave */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.311);
+}
+
+/* contenido encima */
+.hero-content {
+  position: relative;
+  color: white;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-content .sub {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.hero-content h2 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+/* botón elegante */
+.hero-content button {
+  padding: 12px 30px;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-content button:hover {
+  background: white;
+  color: black;
+}
+
+/* HEADER encima del hero */
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  background: transparent;
+  color: white;
+  transition: 0.3s;
+}
+
+#header.scrolled {
+  background: white;
+  color: black;
+}
+
+.fondo-pattern {
+     position: absolute;
+     top: 750px;
+     height: auto;
+     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0px;
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.fondo-pattern p {
+    font-size: 120px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(139, 139, 139, 0.275);
+
+    text-align: center;
+     line-height: 0.69; /* elimina espacio extra entre líneas */
+      padding-bottom: 10px;
+    margin: 0;
+}
+
+@keyframes mover-izquierda {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes mover-derecha {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.izquierda {
+    animation: mover-izquierda 100s linear infinite;
+}
+
+.derecha {
+    animation: mover-derecha 100s linear infinite;
+}
+
+#header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  padding: 8px 30px; /* 🔥 más chico */
+  height: 80px;      /* 🔥 controla el tamaño */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.3s;
+  background: transparent;
+  color: white;
+  z-index: 1000;
+}
+
+/* Cuando pasás el mouse */
+#header:hover {
+  background: white;
+  color: black;
+}
+
+#header.scrolled {
+  background: white;
+  color: black;
+}
+
+#header img {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* o space-between si después agregás menú */
+    padding: 10px;
+     height: 200px;   /* ajustá este valor */
+     width: auto;
+     object-fit: contain;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* SECCIÓN */
+.productos {
+  padding: 60px 40px;
+}
+
+/* HEADER */
+.productos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.productos-header h2 {
+  font-weight: 400;
+}
+
+.productos-header span {
+  font-style: italic;
+}
+
+.productos-header a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+/* CONTENEDOR SCROLL */
+.productos-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* 🔥 clave */
+  scroll-behavior: smooth;
+}
+
+/* ocultar scrollbar (opcional) */
+.productos-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* PRODUCTO */
+.producto {
+  width: 350px;
+  flex: 0 0 auto;
+  z-index: 900;
+}
+
+.producto img {
+  width: 100%;
+  height: 400px;       /* 🔥 clave */
+  object-fit: contain; /* no se deforma */
+  background: #eaeaea;
+  padding: 0px;       /* menos padding */
+}
+
+.producto p {
+  margin: 10px 0 5px;
+  font-size: 14px;
+}
+
+.producto span {
+  font-weight: bold;
+}
+
+/* CONTENEDOR relativo */
+.productos {
+  position: relative;
+}
+
+/* BOTONES */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255,255,255,0.8);
+  color: black;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+  z-index: 910;
+}
+
+/* POSICIÓN */
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* HOVER */
+.prev:hover,
+.next:hover {
+  background: black;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* SOMBRA SUAVE */
+.prev,
+.next {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.prev span,
+.next span {
+  display: inline-block;
+  transform: translateY(-2px); /* ajustá -1px o -2px */
+}
+
+.doble-img {
+  display: flex;
+  gap: 10px;
+  padding: 40px;
+  height: 150vh;
+}
+
+.img-box {
+  flex: 1;
+  overflow: hidden;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 🔥 clave */
+  transition: 0.5s;
+}
+
+/* efecto hover elegante */
+.img-box:hover img {
+  transform: scale(1.01);
+}
+
+/* MAPA */
+.mapa {
+    margin-top: 450px;
+    position: relative;
+}
+
+.mapa-container {
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer {
+    margin-top: 30px;
+    padding: 15px;
+    background: white;
+}
+
