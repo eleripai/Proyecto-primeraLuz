@@ -4,143 +4,141 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Primera Luz</title>
-
+  <!-- Font Awesome para Iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header id="header">
-
-  <img src="imagenes/logo negro.png" alt="Logo">
-
-  <div class="icons">
-    <i class="fa-solid fa-cart-shopping"></i>
+  <!-- Botón Hamburguesa (Móvil) -->
+  <div class="menu-toggle" id="mobile-menu-btn">
+    <i class="fa-solid fa-bars"></i>
   </div>
 
-</header><header id="header">
-  <label for="menu"><img src="imagenes/barra-de-menus.png" alt=""></label>
-  
-  <input type="checkbox"  class="boton" id="menu">
-        <img src="imagenes/logo negro.png" class="logo" alt=>
-        <nav>
-        <ul class="lista-items">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="vestidos.html">Vestidos</a></li>
-            <li><a href="#">Accesorios</a></li>
-            <li><a href="#">Contacto</a></li>
+  <!-- Menú de Navegación -->
+  <nav class="nav-menu" id="nav-menu">
+    <!-- Botón de cerrar exclusivo para Móvil -->
+    <div class="menu-close" id="mobile-menu-close">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <ul>
+      <li class="dropdown">
+        <a href="#" class="main-link">Vestidos <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="#" onclick="filtrarCategoria('vestidos')">Ver Vestidos</a></li>
+          <li><a href="#">Guía de talles</a></li>
         </ul>
-    </nav>
-         <div class="icons">
-    <i class="fa-solid fa-cart-shopping"></i>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="main-link">Accesorios <i class="fa-solid fa-chevron-down"></i></a>
+        <ul class="dropdown-content">
+          <li><a href="#">Abrigos</a></li>
+          <li><a href="#">Tacones</a></li>
+          <li><a href="#">Collares</a></li>
+          <li><a href="#">Aros</a></li>
+          <li><a href="#">Tiara</a></li>
+        </ul>
+      </li>
+      <li><a href="#nosotros" onclick="cerrarMenuMovil()">Nosotros</a></li>
+      <li><a href="#contacto" onclick="cerrarMenuMovil()">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Capa oscura de fondo para cerrar el menú en celular al tocar afuera -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+
+  <!-- Logo Central Dinámico -->
+  <div class="logo">
+    <a href="#" onclick="mostrarInicio()">
+      <img src="imagenes/logo blanco.png" alt="Primera Luz" class="logo-blanco">
+      <img src="imagenes/logo negro.png" alt="Primera Luz" class="logo-negro">
+    </a>
+  </div>
+
+  <!-- Iconos de Acción -->
+  <div class="icons">
+    <div class="search-box-container">
+      <input type="text" id="search-input" placeholder="Buscar vestidos o productos...">
+      <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+    </div>
+    <div class="fav-icon-container" onclick="alternarSeccionFavoritos()">
+      <i class="fa-regular fa-heart" id="header-fav-icon"></i>
+      <span id="fav-count">0</span>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-
-  <div class="hero-content">
-    <p class="sub">Nueva colección 2026&copy;</p>
-    <h2>PRIMERA LUZ</h2>
-    <button>DESCUBRIR</button>
+<!-- SECCIÓN DE FAVORITOS (Oculta al principio) -->
+<section id="seccion-favoritos" class="seccion-oculta">
+  <div class="productos-header">
+    <h2>Mis <span>Favoritos</span></h2>
+    <a href="#" onclick="alternarSeccionFavoritos()">Volver a la tienda</a>
   </div>
-
+  <div class="productos-container favs-grid" id="favoritos-container"></div>
 </section>
 
-<div class="fondo-pattern">
+<!-- CONTENIDO PRINCIPAL DE LA TIENDA -->
+<div id="contenido-tienda">
+  <section class="hero">
+    <div class="hero-content">
+      <p class="sub">Nueva colección 2026©</p>
+      <h2>PRIMERA LUZ</h2>
+      <button>DESCUBRIR</button>
+    </div>
+  </section>
 
-  <p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-  <p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-  <p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-  <p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
+  <div class="fondo-pattern">
+    <p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
+    <p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
+    <p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
+    <p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
+  </div>
 
+  <section class="productos" id="productos-seccion">
+    <div class="productos-header">
+      <h2><span id="titulo-cambiante">new</span> ARRIVALS</h2>
+      <a href="#" id="view-all-btn" onclick="limpiarFiltros(event)">VIEW ALL</a>
+    </div>
+
+    <div class="productos-container" id="grilla-productos"></div>
+
+    <button class="prev">‹</button>
+    <button class="next">›</button>
+  </section>
+
+  <section class="doble-img" id="nosotros">
+    <div class="img-box">
+      <img src="imagenes/nadia 1.jpeg" alt="Nosotros 1">
+    </div>
+    <div class="img-box">
+      <img src="imagenes/nadia 2.jpeg" alt="Nosotros 2">
+    </div>
+  </section>
+
+  <section class="mapa" id="contacto">
+    <div class="productos-header" style="justify-content: center; margin-bottom: 20px;">
+      <h2>CONTACTO</h2>
+    </div>
+    <div class="mapa-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12409.991890529654!2d-68.10736975!3d-38.9582959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33a9f56a01f5%3A0x556e608edd1cfa00!2sPrimera%20Luz%20De%20Luciana%20Vestidos%2C%20ventas%20y%20alquiler%20en%20neuquen!5e0!3m2!1ses-419!2sar!4v1774406930002!5m2!1ses-419!2sar"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 </div>
 
-<section class="productos">
-
-  <div class="productos-header">
-    <h2><span>new</span> ARRIVALS</h2>
-    <a href="#">VIEW ALL</a>
-  </div>
-
-  <div class="productos-container">
-
-    <div class="producto">
-      <img src="imagenes/vestido 1.png">
-      <p>Producto 1</p>
-      <span>$100</span>
-    </div>
-
-    <div class="producto">
-      <img src="imagenes/vestido 2.png">
-      <p>Producto 2</p>
-      <span>$200</span>
-    </div>
-
-    <div class="producto">
-      <img src="imagenes/vestido 3.jpeg">
-      <p>Producto 3</p>
-      <span>$150</span>
-    </div>
-
-    <div class="producto">
-      <img src="imagenes/vestido 4.png">
-      <p>Producto 4</p>
-      <span>$300</span>
-    </div>
-
-    <div class="producto">
-      <img src="imagenes/vestido 5.png">
-      <p>Producto 5</p>
-      <span>$300</span>
-    </div>
-
-    <div class="producto">
-      <img src="imagenes/vestido 6.png">
-      <p>Producto 6</p>
-      <span>$300</span>
-    </div>
-
-  </div>
-
-  <button class="prev">‹</button>
-  <button class="next">›</button>
-
-</section>
-
-<section class="doble-img">
-
-  <div class="img-box">
-    <img src="imagenes/nadia 1.jpeg">
-  </div>
-
-  <div class="img-box">
-    <img src="imagenes/nadia 2.jpeg">
-  </div>
-
-</section>
-
-<section class="mapa">
-
-  <div class="mapa-container">
-
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12409.991890529654!2d-68.10736975!3d-38.9582959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33a9f56a01f5%3A0x556e608edd1cfa00!2sPrimera%20Luz%20De%20Luciana%20Vestidos%2C%20ventas%20y%20alquiler%20en%20neuquen!5e0!3m2!1ses-419!2sar!4v1774406930002!5m2!1ses-419!2sar"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-
-  </div>
-
-</section>
-
 <footer>
-  <p>&copy; 2026 Primera Luz</p>
+  <p>© 2026 Primera Luz</p>
 </footer>
 
+<!-- JavaScript -->
 <script src="script.js"></script>
-
 </body>
 </html>
