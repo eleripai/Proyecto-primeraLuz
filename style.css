@@ -409,3 +409,20 @@ footer{
   }
 
 }
+
+.boton{
+ display: none;
+}
+
+@media screen and (max-width: 500px){
+  nav{display: none;}
+  .boton:checked ~ nav{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .lista-items{
+    display: flex;
+    flex-direction: column;
+  }
+}
