@@ -1,144 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Primera Luz</title>
-  <!-- Font Awesome para Iconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Estilos CSS -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header id="header">
-  <!-- Botón Hamburguesa (Móvil) -->
-  <div class="menu-toggle" id="mobile-menu-btn">
-    <i class="fa-solid fa-bars"></i>
-  </div>
-
-  <!-- Menú de Navegación -->
-  <nav class="nav-menu" id="nav-menu">
-    <!-- Botón de cerrar exclusivo para Móvil -->
-    <div class="menu-close" id="mobile-menu-close">
-      <i class="fa-solid fa-xmark"></i>
-    </div>
-
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Primera Luz</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body data-pagina="inicio"><header id="header">
+  <div class="menu-toggle" id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+  <nav class="nav-menu" id="nav-menu"><div class="menu-close" id="mobile-menu-close"><i class="fa-solid fa-xmark"></i></div>
     <ul>
-      <li class="dropdown">
-        <a href="#" class="main-link">Vestidos <i class="fa-solid fa-chevron-down"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="#" onclick="filtrarCategoria('vestidos')">Ver Vestidos</a></li>
-          <li><a href="#">Guía de Medidas</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="main-link">Accesorios <i class="fa-solid fa-chevron-down"></i></a>
-        <ul class="dropdown-content">
-          <li><a href="#">Abrigos</a></li>
-          <li><a href="#">Tacones</a></li>
-          <li><a href="#">Collares</a></li>
-          <li><a href="#">Aros</a></li>
-          <li><a href="#">Tiara</a></li>
-        </ul>
-      </li>
-      <li><a href="#nosotros" onclick="cerrarMenuMovil()">Nosotros</a></li>
-      <li><a href="#contacto" onclick="cerrarMenuMovil()">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- Capa oscura de fondo para cerrar el menú en celular al tocar afuera -->
+      <li class="dropdown"><a href="vestidos.html" class="main-link">Vestidos <i class="fa-solid fa-chevron-down"></i></a><ul class="dropdown-content"><li><a href="vestidos.html">Ver Vestidos</a></li><li><a href="index.html#talles">Guía de talles</a></li></ul></li>
+      <li class="dropdown"><a href="#" class="main-link" onclick="return false">Accesorios <i class="fa-solid fa-chevron-down"></i></a><ul class="dropdown-content">
+        <li><a href="abrigos.html">Abrigos</a></li><li><a href="tacones.html">Tacones</a></li><li><a href="collares.html">Collares</a></li><li><a href="aros.html">Aros</a></li><li><a href="tiaras.html">Tiara</a></li></ul></li>
+      <li><a href="index.html#nosotros">Nosotros</a></li><li><a href="index.html#contacto">Contacto</a></li>
+    </ul></nav>
   <div class="menu-overlay" id="menu-overlay"></div>
-
-  <!-- Logo Central Dinámico -->
-  <div class="logo">
-    <a href="#" onclick="mostrarInicio()">
-      <img src="imagenes/logo blanco.png" alt="Primera Luz" class="logo-blanco">
-      <img src="imagenes/logo negro.png" alt="Primera Luz" class="logo-negro">
-    </a>
-  </div>
-
-  <!-- Iconos de Acción -->
-  <div class="icons">
-    <div class="search-box-container">
-      <input type="text" id="search-input" placeholder="Buscar vestidos o productos...">
-      <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-    </div>
-    <div class="fav-icon-container" onclick="alternarSeccionFavoritos()">
-      <i class="fa-regular fa-heart" id="header-fav-icon"></i>
-      <span id="fav-count">0</span>
-    </div>
-  </div>
+  <div class="logo"><a href="index.html"><img src="imagenes/logo blanco.png" alt="Primera Luz" class="logo-blanco"><img src="imagenes/logo negro.png" alt="Primera Luz" class="logo-negro"></a></div>
+  <div class="icons"><div class="search-box-container"><input type="text" id="search-input" placeholder="Buscar productos..."><i class="fa-solid fa-magnifying-glass" id="search-icon"></i></div><button class="header-action" onclick="alternarSeccionFavoritos()" aria-label="Favoritos"><i class="fa-regular fa-heart" id="header-fav-icon"></i><span id="fav-count">0</span></button><button class="header-action" onclick="alternarCarrito()" aria-label="Carrito"><i class="fa-solid fa-bag-shopping"></i><span id="cart-count">0</span></button></div>
 </header>
-
-<!-- SECCIÓN DE FAVORITOS (Oculta al principio) -->
-<section id="seccion-favoritos" class="seccion-oculta">
-  <div class="productos-header">
-    <h2>Mis <span>Favoritos</span></h2>
-    <a href="#" onclick="alternarSeccionFavoritos()">Volver a la tienda</a>
-  </div>
-  <div class="productos-container favs-grid" id="favoritos-container"></div>
-</section>
-
-<!-- CONTENIDO PRINCIPAL DE LA TIENDA -->
-<div id="contenido-tienda">
-  <section class="hero">
-    <div class="hero-content">
-      <p class="sub">Nueva colección 2026©</p>
-      <h2>PRIMERA LUZ</h2>
-      <button>DESCUBRIR</button>
-    </div>
-  </section>
-
-  <div class="fondo-pattern">
-    <p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-    <p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-    <p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-    <p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p>
-  </div>
-
-  <section class="productos" id="productos-seccion">
-    <div class="productos-header">
-      <h2><span id="titulo-cambiante">new</span> ARRIVALS</h2>
-      <a href="#" id="view-all-btn" onclick="limpiarFiltros(event)">VIEW ALL</a>
-    </div>
-
-    <div class="productos-container" id="grilla-productos"></div>
-
-    <button class="prev">‹</button>
-    <button class="next">›</button>
-  </section>
-
-  <section class="doble-img" id="nosotros">
-    <div class="img-box">
-      <img src="imagenes/nadia 1.jpeg" alt="Nosotros 1">
-    </div>
-    <div class="img-box">
-      <img src="imagenes/nadia 2.jpeg" alt="Nosotros 2">
-    </div>
-  </section>
-
-  <section class="mapa" id="contacto">
-    <div class="productos-header" style="justify-content: center; margin-bottom: 20px;">
-      <h2>CONTACTO</h2>
-    </div>
-    <div class="mapa-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12409.991890529654!2d-68.10736975!3d-38.9582959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33a9f56a01f5%3A0x556e608edd1cfa00!2sPrimera%20Luz%20De%20Luciana%20Vestidos%2C%20ventas%20y%20alquiler%20en%20neuquen!5e0!3m2!1ses-419!2sar!4v1774406930002!5m2!1ses-419!2sar"
-        allowfullscreen=""
-        loading="lazy">
-      </iframe>
-    </div>
-  </section>
-</div>
-
-<footer>
-  <p>© 2026 Primera Luz</p>
-</footer>
-
-<!-- JavaScript -->
-<script src="script.js"></script>
-</body>
-</html>
+<section class="hero"><div class="hero-content"><p class="sub">Nueva colección 2026©</p><h2>PRIMERA LUZ</h2><p class="hero-description">Vestidos y accesorios para momentos que merecen quedarse en la memoria.</p><a class="btn-principal hero-btn" href="#productos-seccion">DESCUBRIR</a></div></section>
+<div id="contenido-tienda"><div class="fondo-pattern"><p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p><p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p><p class="fila izquierda">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p><p class="fila derecha">PRIMERA LUZ PRIMERA LUZ PRIMERA LUZ</p></div>
+<section class="productos" id="productos-seccion"><div class="productos-header"><h2><span id="titulo-categoria">NEW ARRIVALS</span></h2><a href="#productos-seccion" onclick="document.getElementById('search-input').value='';renderizarProductos();return false">VIEW ALL</a></div><div class="productos-container" id="grilla-productos"></div><button class="prev" aria-label="Anterior">‹</button><button class="next" aria-label="Siguiente">›</button></section>
+<section class="categorias-destacadas"><div class="section-title"><p>Explorá</p><h2>Nuestras categorías</h2></div><div class="categoria-links"><a href="vestidos.html"><span>01</span>Vestidos</a><a href="abrigos.html"><span>02</span>Abrigos</a><a href="collares.html"><span>03</span>Collares</a><a href="aros.html"><span>04</span>Aros</a><a href="tacones.html"><span>05</span>Tacones</a><a href="tiaras.html"><span>06</span>Tiara</a></div></section>
+<section class="doble-img" id="nosotros"><div class="img-box"><img src="imagenes/nadia 1.jpeg" alt="Primera Luz - nosotros"></div><div class="img-box about-copy"><p>Primera Luz</p><h2>Una mirada a lo especial.</h2><span>Una propuesta pensada para acompañarte en celebraciones, noches y momentos que querés recordar.</span></div></section>
+<section class="talles" id="talles"><div><p>Encontrá tu medida</p><h2>Guía de talles</h2><p>Tomá tus medidas con una cinta métrica y comparalas con la tabla del producto. Si estás entre dos talles, consultá antes de elegir.</p></div><div class="talles-table"><div><b>Talle</b><b>Busto</b><b>Cintura</b></div><div><span>XS</span><span>82–86</span><span>62–66</span></div><div><span>S</span><span>87–91</span><span>67–71</span></div><div><span>M</span><span>92–96</span><span>72–76</span></div><div><span>L</span><span>97–102</span><span>77–82</span></div></div></section>
+<section class="mapa" id="contacto"><div class="productos-header contact-title"><h2>CONTACTO</h2></div><div class="contacto-grid"><div><p>¿Querés conocer disponibilidad, medidas o detalles?</p><h3>Estamos para ayudarte.</h3><p>Visitá nuestro punto de atención o utilizá el mapa para encontrar la ubicación de Primera Luz.</p></div><div class="mapa-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12409.991890529654!2d-68.10736975!3d-38.9582959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a33a9f56a01f5%3A0x556e608edd1cfa00!2sPrimera%20Luz%20De%20Luciana%20Vestidos%2C%20ventas%20y%20alquiler%20en%20neuquen!5e0!3m2!1ses-419!2sar!4v1774406930002!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe></div></div></section></div><section id="seccion-favoritos" class="seccion-oculta"><div class="productos-header"><h2>Mis <span>Favoritos</span></h2><a href="javascript:alternarSeccionFavoritos()">Volver a la tienda</a></div><div class="productos-container favs-grid" id="favoritos-container"></div></section>
+<div class="quick-view-modal" id="quick-view-modal"><div class="quick-view-card" id="quick-view-content"></div></div>
+<aside class="carrito-panel" id="carrito-panel"><div class="carrito-header"><h2>Mi carrito</h2><button onclick="alternarCarrito()"><i class="fa-solid fa-xmark"></i></button></div><div id="carrito-items"></div><div class="carrito-footer"><div><span>Total</span><strong id="carrito-total">$0</strong></div><button class="btn-principal" onclick="mostrarToast('Demo: podés conectar aquí tu checkout')">Continuar</button></div></aside><div class="toast" id="toast"></div><footer><p>© 2026 Primera Luz</p><a href="#">Volver arriba</a></footer><script src="script.js"></script></body></html>
